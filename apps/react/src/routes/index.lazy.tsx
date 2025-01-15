@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { api } from 'libs'
+import { api } from "@repo/eden"
 
 export const Route = createLazyFileRoute('/')({
   component: Index
@@ -9,8 +9,9 @@ export const Route = createLazyFileRoute('/')({
 function Index() {
   const { data: index, isLoading } = useQuery({
     queryKey: ["index"],
-    queryFn: () => await api,
+    queryFn: () => api.api.index.get(),
   });
+  console.log(index, isLoading)
 
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ['repoData'],
