@@ -7,11 +7,11 @@ export const Route = createLazyFileRoute('/')({
 })
 
 function Index() {
-  const { data: index, isLoading } = useQuery({
-    queryKey: ["index"],
-    queryFn: () => api.api.index.get(),
+  const { data: hello, isLoading } = useQuery({
+    queryKey: ["hello"],
+    queryFn: () => api.api.hello.get(),
   });
-  console.log(index, isLoading)
+  console.log(hello, isLoading)
 
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ['repoData'],
